@@ -47,7 +47,7 @@ class Lesson(BaseModel):
         unique_together = ('subject', 'course')
 
     subject = models.CharField(max_length=255)
-    content = models.TextField()
+    content = RichTextField(null=True)
     image = CloudinaryField()
     course = models.ForeignKey(Course, on_delete=models.CASCADE
                                , related_name='lessons'
@@ -57,3 +57,19 @@ class Lesson(BaseModel):
 
     def __str__(self):
         return self.subject
+
+class Interaction(BaseModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+
+    class Meta:
+        abstract = True
+
+
+class Comment(Interaction):
+    content = models.CharField(max_length=255)
+
+
+class Like(Interaction):
+    class Meta:
+        unique_together = ('user', 'lesson')
