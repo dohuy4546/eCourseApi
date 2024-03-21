@@ -6,7 +6,7 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class User(AbstractUser):
-    pass
+    avatar = CloudinaryField(null=True)
 
 
 class Category(models.Model):
@@ -57,6 +57,7 @@ class Lesson(BaseModel):
 
     def __str__(self):
         return self.subject
+
 
 class Interaction(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

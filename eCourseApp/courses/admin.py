@@ -3,6 +3,8 @@ from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from courses.models import Category, Course, Lesson, Tag, User
 from django.utils.html import mark_safe
+
+
 # Register your models here.
 
 class CourseForm(forms.ModelForm):
@@ -11,6 +13,7 @@ class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
         fields = '__all__'
+
 
 class CourseAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'created_date', 'updated_date', 'active']
@@ -27,7 +30,6 @@ class CourseAdmin(admin.ModelAdmin):
         css = {
             'all': ['/static/css/style.css']
         }
-
 
 
 admin.site.register(Category)
