@@ -51,7 +51,14 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'rest_framework',
     'drf_yasg',
+    'oauth2_provider',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    )
+}
 
 CKEDITOR_UPLOAD_PATH = "ckeditors/images/%Y/%m"
 
@@ -138,3 +145,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CLIENT_ID = 'Un4B9c3e5epipwUbYZtT5jMXwVvuTGcsARTJ25WN'
+CLIENT_SECRET = 'tf7hALB2HtK7xYOyjzximv03x3ziQC7v0buKHu89CWuA2OmHBfQ0TlsstYYHJclmCUfEzQUD2Cndsl5HnIFvDC71otZDaSGJYuFKmsxWM74W4HANSYF2H9kY0Pg9GazD'

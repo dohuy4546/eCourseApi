@@ -74,3 +74,10 @@ class Comment(Interaction):
 class Like(Interaction):
     class Meta:
         unique_together = ('user', 'lesson')
+
+
+class Rating(Interaction):
+    rating = models.IntegerField(choices=[(i, str(i)) for i in range(1, 6)])
+
+    class Meta:
+        unique_together = ('user', 'lesson')
